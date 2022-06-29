@@ -1,7 +1,7 @@
 module.exports = {
   user: 'api_csv',
   host: 'localhost',
-  database: 'csv-api',
+  database: 'api-csv-db',
   password: 'api_csv_password',
   port: 5432,
 };
