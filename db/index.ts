@@ -3,4 +3,4 @@ const { user, host, database, password, port } = require('../secrets/db_configur
 
 const pool = new Pool({ user, host, database, password, port });
 
-export default pool;
+module.exports = pool;
