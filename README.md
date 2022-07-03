@@ -2,6 +2,8 @@
 
 > API service allowing CSV data import and data retrieval
 
+To set up the project you need to create a postgres user "api_csv"
+
 ## Install
 
 ```sh
