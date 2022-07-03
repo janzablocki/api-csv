@@ -1,28 +1,26 @@
 const { Router } = require('express');
 import { Request, Response } from 'express';
-var pool = require('../db/index');
+import { getUsers, getUserById } from '../helpers/users';
 
 const router = Router();
 
-router.get('/', (_request:Request, response:Response) => {
-  pool.query('SELECT * FROM users ORDER BY id ASC')
-    .then((result: any) => {
-      response.json(result.rows);
-    },
-    ).catch((err: any) => {
-      response.status(500).send(err);
-    });
+router.get('/', async (_request:Request, response:Response) => {
+  const result = await getUsers();
+  response.json(result);
 });
 
-router.get('/:id', (request:Request, response:Response) => {
+router.get('/:id', async (request:Request, response:Response) => {
   const id = parseInt(request.params.id);
-  pool.query('SELECT * FROM users WHERE id = $1', [id])
-    .then((result: any) => {
-      response.json(result.rows);
-    })
-    .catch((err: any) => {
-      response.status(500).send(err);
-    });
+  if (isNaN(id)) {
+    response.status(400).json({ error: 'Invalid id' });
+    return;
+  }
+  const result = await getUserById(id);
+  if (!result) {
+    response.status(404).json({ error: 'User not found' });
+    return;
+  }
+  response.json([result]);
 });
 
 module.exports = router;
