@@ -27,3 +27,21 @@ export interface TeamInsertResponse {
   detail: string;
   err_code?: string;
 }
+
+export interface UserData {
+  id: number,
+  first_name: string | null,
+  last_name: string | null,
+  email: string | null,
+  role_description: string | null,
+  team: string | null,
+}
+
+export interface TeamData {
+  team: string;
+  id: number;
+}
+
+export interface TeamWithUsers extends TeamData {
+  users: UserData[];
+}
