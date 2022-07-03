@@ -4,6 +4,9 @@
 
 To set up the project you need to create a postgres user "api_csv"
 
+## API Documentation
+https://documenter.getpostman.com/view/17449750/UzJFvJ6g
+
 ## Install
 
 ```sh
