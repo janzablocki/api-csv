@@ -2,9 +2,9 @@ const pool = require('../db/index');
 
 import { InputData, FormattedInputData, TeamInsertResponse, UserInsertResponse } from '../types/types';
 
-function format(string:string | undefined): string | null {
-  if (string === '' || !string || typeof string !== 'string') return null;
-  return string.trim();
+function formatString(input:string | undefined): string | null {
+  if (input === '' || !input || typeof input !== 'string') return null;
+  return input.trim();
 }
 
 export async function insertUsers(input: FormattedInputData[]): Promise<UserInsertResponse[]> {
@@ -43,11 +43,11 @@ export function formatCsv(input: InputData[]): FormattedInputData[] {
   const result: FormattedInputData[] = [];
   for (const user of input) {
     result.push({
-      first_name: format(user['first name']),
-      last_name: format(user['last name']),
-      email: format(user.email),
-      role_description: format(user['role description']),
-      team: format(user.team),
+      first_name: formatString(user['first name']),
+      last_name: formatString(user['last name']),
+      email: formatString(user.email),
+      role_description: formatString(user['role description']),
+      team: formatString(user.team),
     });
   }
   return result;
