@@ -32,7 +32,7 @@ describe('Insert users to database', () => {
     expect(result[0].user).toEqual(input[0]);
     expect(result[0].created).toBe(false);
     expect(result[0].err_code).toBe('23505');
-    pool.query('DELETE FROM users WHERE email = $1', [input[0].email]);
+    await pool.query('DELETE FROM users WHERE email = $1', [input[0].email]);
   });
 });
 
@@ -51,6 +51,7 @@ describe('Insert teams to database', () => {
     expect(result[0].team).toEqual(input[0]);
     expect(result[0].created).toBe(false);
     expect(result[0].err_code).toBe('23505');
+    await pool.query('DELETE FROM teams WHERE team = $1', [input[0]]);
   });
 });
 
