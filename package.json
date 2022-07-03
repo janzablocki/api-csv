@@ -3,7 +3,8 @@
     "lint": "eslint . --ext .ts",
     "compile": "tsc && nodemon ./dist/index.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\"",
-    "configure": "./bin/configuredb.sh"
+    "configure": "./bin/configuredb.sh",
+    "test": "jest --config ./jest.config.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -19,5 +19,5 @@ npm run dev
 ## Run tests
 
 ```sh
-jest
+npm run test
 ```
